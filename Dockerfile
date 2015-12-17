@@ -2,12 +2,10 @@ FROM vladikoff/fxa-slim-image:latest
 
 MAINTAINER michielbdejong <michiel@mozilla.com>
 
-RUN adduser --disabled-password --gecos '' fxa && adduser fxa sudo && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN apt-get update -y && apt-get install -y golang-go mercurial && apt-get clean
 
 COPY . /home/fxa/fxa-content-server
 WORKDIR /home/fxa/fxa-content-server
-RUN chown -R fxa .
-# USER fxa
 
 RUN make
 
