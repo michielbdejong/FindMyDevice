@@ -7,7 +7,7 @@ RUN adduser --disabled-password --gecos '' fxa && adduser fxa sudo && echo '%sud
 COPY . /home/fxa/fxa-content-server
 WORKDIR /home/fxa/fxa-content-server
 RUN chown -R fxa .
-USER fxa
+# USER fxa
 
 RUN make
 
